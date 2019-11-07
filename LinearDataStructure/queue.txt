@@ -1,0 +1,75 @@
+main.cpp
+
+#include <iostream>
+#include "queue.h"
+using namespace std;
+int main()
+{
+    queue test;
+    test.enqueue(1);
+    test.enqueue(5);
+    test.enqueue(10);
+    cout<<test.dequeue();
+    getch();
+    return 0;
+}
+
+
+queue.h
+
+#define MAX 100
+
+class queue{
+private:
+    int elements[MAX];
+    int front;
+    int rear;
+public:
+    queue();
+    bool enqueue(int value);
+    int dequeue();
+    bool isEmpty();
+    bool isFull();
+
+};
+
+
+queue.cpp
+
+#include<iostream>
+#include "queue.h"
+using namespace std;
+
+queue::queue(){
+    front=-1;
+    rear=-1;
+}
+bool queue::isEmpty(){
+    return (front==rear);
+}
+bool queue::isFull(){
+    return (rear==MAX-1);
+}
+
+bool queue::enqueue(int value){
+    if (isFull()){
+        cout<<"Queue overflow"<<endl;
+        return false;
+    }
+    else{
+        rear++;
+        elements[rear]=value;
+        return true;
+    }
+}
+
+int queue::dequeue(){
+    if (isEmpty()){
+        cout<<"Queue underflow"<<endl;
+        return -1;
+    }
+    else{
+        front++;
+        return elements[front];
+    }
+}
