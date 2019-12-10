@@ -17,13 +17,13 @@ public:
     //~List();
     bool isEmpty();
     void addToHead(int data);
-    void add(int data,Node *predecessor);
+    void add(int data,Node* &predecessor);
     void addToTail(int data);
     void removeFromHead();
     bool Remove(int data);
     bool Search(int data);
     void traverse();
-    bool retrieve(int data, Node *outputptr);
+    bool retrieve(int data, Node* &outputptr);
 };
 
 List::List(){
@@ -59,7 +59,7 @@ void List::addToTail(int data){
 
 }
 
-void List::add(int data,Node *predecessor){
+void List::add(int data,Node* &predecessor){
     Node *newNode;
     newNode->info=data;
     newNode->next = predecessor->next;
@@ -134,7 +134,7 @@ void List::traverse(){
     }
 }
 
-bool List::retrieve(int data, Node *outputptr){
+bool List::retrieve(int data, Node* &outputptr){
     Node*p=head;
     while(p!=NULL && p->info!=data){
         p=p->next;
